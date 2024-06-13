@@ -1,20 +1,18 @@
-import { useState } from 'react';
-import Preview from './Components/Preview/Preview';
-import Search from './Components/Search/Search';
-
-
+import "./assets/globals.css";
+import { useState } from "react";
+import Preview from "./Components/Preview/Preview";
+import Search from "./Components/Search/Search";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-    <Search/>
-    
-    <Preview/>
-      
+      <Search />
+
+      <Preview />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
