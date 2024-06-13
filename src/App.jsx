@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import Preview from './Components/Preview/Preview'
+import { useState } from 'react';
+import Preview from './Components/Preview/Preview';
+import Search from './Components/Search/Search';
 
 
 
@@ -8,6 +9,8 @@ function App() {
 
   return (
     <>
+    <Search/>
+    
     <Preview/>
       
     </>

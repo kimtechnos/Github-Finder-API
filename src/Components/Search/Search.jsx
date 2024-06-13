@@ -12,13 +12,16 @@ function Search() {
           By<span> Francis Kimani </span>
         </p>
 
-        <div className="searchInput">
-          <input type="text" placeholder="Enter a username" />
-          <button type="button"> Search</button>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Enter a username"/>
+          
+          <button>Search</button>
         </div>
       </div>
     </div>
   );
 }
 
-export default Search
+export default Search;

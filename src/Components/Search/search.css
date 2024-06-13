@@ -4,6 +4,30 @@
     --color-white:#fff7d6;
     --color-black:#010101;
 }
-search-section{
-    
+.search-section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-black);
+    padding: 0.2rem;
+}
+.search-section .title{
+    color: var(--color-white);
+    font-size: 0.9rem;
+}
+.search-section p{
+    color: var(--color-white);
+    font-size: 0.9rem;
+}
+.search-bar input{
+      padding: 5px;
+  /* width: 200px; */
+  margin-right: 10px;
+}
+button{
+padding: 10px;
+ 
+  border: none;
+  color:var(--color-black);
+  cursor: pointer;
 }
