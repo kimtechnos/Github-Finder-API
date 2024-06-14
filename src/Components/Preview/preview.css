@@ -1,0 +1,60 @@
+.profile-card {
+  width: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+  background-color: var(--color-white);
+  margin-top: 0;
+}
+
+.profile-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+h2 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--color-black);
+}
+.view-github {
+  display: inline-block;
+  margin: 12px 0;
+  padding: 8px 16px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: bold;
+  letter-spacing: 0.3px;
+  border-radius: 4px;
+}
+.username {
+  margin: 10px 0;
+  font-size: 16px;
+}
+.location,
+.repositories,
+.followers {
+  font-size: 10px;
+  color: var(--color-black);
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+.location svg,
+.repositories svg,
+.followers svg {
+  margin-right: 10px;
+  font-size: 15px;
+}
+.section-repos {
+  display: flex;
+  flex-direction: row;
+}

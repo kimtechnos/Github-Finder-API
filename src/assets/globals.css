@@ -14,9 +14,9 @@ html,
 body {
   overflow-x: hidden;
 }
-:root{
-    --primary-color:#f1f1e6;
-    --color-secondary:#fff7d6;
-    --color-white:#fff7d6;
-    --color-black:#010101;
+:root {
+  --primary-color: #f1f1e6;
+  --color-secondary: #fff7d6;
+  --color-white: #ffffff;
+  --color-black: #010101;
 }

@@ -1,16 +1,26 @@
 import "./assets/globals.css";
 import { useState } from "react";
-import Preview from "./Components/Preview/Preview";
+import Previews from "./Components/Preview/previews";
 import Search from "./Components/Search/Search";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
-      <Search />
-
-      <Preview />
+      <Search setIsLoading={setIsLoading} setData={setData} />
+      <Previews
+        location={data.location}
+        public_repos={data.public_repos}
+        followers={data.followers}
+        following={data.following}
+        avatar_url={data.avatar_url}
+        name={data.name}
+        login={data.login}
+        // html_url={html_url}
+        isLoading={isLoading}
+      />
     </>
   );
 }
