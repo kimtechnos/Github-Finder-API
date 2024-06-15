@@ -18,7 +18,8 @@ function App() {
         avatar_url={data.avatar_url}
         name={data.name}
         login={data.login}
-        // html_url={html_url}
+        followersData={data.followersData}
+        followingData={data.followingData}
         isLoading={isLoading}
       />
     </>

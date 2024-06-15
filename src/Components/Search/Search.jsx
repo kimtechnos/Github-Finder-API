@@ -3,14 +3,27 @@ import "./search.css";
 
 const Search = ({ setData, setIsLoading }) => {
   const [user, setUser] = useState("kimtechnos");
-  const [error, setError] = useState([]);
+  const [error, setError] = useState("");
 
   const handleClick = async () => {
     setIsLoading(true);
+    setError("");
     try {
       const response = await fetch(`https://api.github.com/users/${user}`);
+      if (!response.ok) {
+        throw new Error(`User ${user} not found`);
+      }
       const userData = await response.json();
-      setData(userData);
+
+      const followersResponse = await fetch(userData.followers_url);
+      const followersData = await followersResponse.json();
+
+      const followingResponse = await fetch(
+        `https://api.github.com/users/${user}/following`,
+      );
+      const followingData = await followingResponse.json();
+
+      setData({ ...userData, followersData, followingData });
     } catch (error) {
       console.error("Error fetching data:", error);
       setError("Failed to fetch data from Github API");
@@ -19,21 +32,9 @@ const Search = ({ setData, setIsLoading }) => {
       setIsLoading(false);
     }
   };
-  // if (setIsLoading) {
-  //   return <div>loading........</div>;
-  // }
-  // if (error) {
-  //   return <div>{error}</div>;
-  // }
-  // if (!user) {
-  //   return <div>User not found</div>;
-  // }
 
   useEffect(() => {
-    const fetchData = async () => {
-      await handleClick();
-    };
-    fetchData();
+    handleClick();
   }, []);
 
   return (
@@ -47,7 +48,6 @@ const Search = ({ setData, setIsLoading }) => {
             <a href=""> By Francis Kimani</a>
           </span>
         </p>
-
         <div className="search-bar">
           <input
             type="text"
@@ -58,6 +58,7 @@ const Search = ({ setData, setIsLoading }) => {
           <button onClick={handleClick}>Search</button>
         </div>
       </div>
+      {error && <div className="error">{error}</div>}
     </div>
   );
 };
