@@ -1,6 +1,7 @@
 import React from "react";
 import "./preview.css";
 import Repos from "./Repos";
+import useStore from "../../store/userStore";
 import {
   FaMapMarkerAlt,
   FaBook,
@@ -22,6 +23,13 @@ const Previews = ({
   reposData,
   isLoading,
 }) => {
+  const repos = useStore((state) => state.reposData);
+
+  const followers_Data = useStore((state) => state.followersData);
+  const following_Data = useStore((state) => state.followingData);
+  const fetchuser = useStore((state) => state.fetchData);
+  const userName = useStore((state) => state.userName);
+
   return (
     <div className="profile-container">
       <div className="profile-card">
@@ -66,15 +74,20 @@ const Previews = ({
       <div className="followers-following-section">
         <div className="repo">
           <h3>{`Repositories ${
-            reposData?.length > 0 ? reposData.length : "No repositories"
+            repos?.length > 0 ? repos.length : "No repositories"
           }`}</h3>
         </div>
         <div className="repository-section">
-          {reposData && reposData.length > 0 ? (
-            reposData.map((repo) => <Repos key={repo.id} repo={repo} />)
-          ) : (
-            <p>No repositories</p>
-          )}
+          {repos.map((repos, i) => (
+            <Repos
+              key={i}
+              reposName={repos.name}
+              repoDesc={repos.description}
+              fork={repos.forks}
+              star={repos.stargazers_count}
+              link={repos.html_url}
+            />
+          ))}
         </div>
 
         <div className="followers">
@@ -82,8 +95,8 @@ const Previews = ({
           <h3>Followers {followers}</h3>
         </div>
         <div className="followers-list">
-          {followersData && followersData.length > 0 ? (
-            followersData.map((follower) => (
+          {followers_Data.length > 0 ? (
+            followers_Data.map((follower) => (
               <div key={follower.login} className="follower-card">
                 <img
                   src={follower.avatar_url}
@@ -113,8 +126,8 @@ const Previews = ({
           <h3>Following {following}</h3>
         </div>
         <div className="following-list">
-          {followingData && followingData.length > 0 ? (
-            followingData.map((following) => (
+          {following_Data && following_Data.length > 0 ? (
+            following_Data.map((following) => (
               <div key={following.login} className="following-card">
                 <img
                   src={following.avatar_url}

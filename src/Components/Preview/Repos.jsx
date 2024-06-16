@@ -2,21 +2,21 @@ import { GoRepoForked } from "react-icons/go";
 import { FaStar } from "react-icons/fa";
 import "./preview.css";
 
-const Repos = ({ repo }) => {
+const Repos = ({ reposName, repoDesc, fork, star, link }) => {
   return (
     <div className="repo-card">
-      <a href={repo.html_url} target="_blank">
+      <a href={link} target="_blank">
         <div className="header">
-          <h2>{repo.name}</h2>
-          <p>{repo.description}</p>
+          <h2>{reposName}</h2>
+          <p>{repoDesc}</p>
         </div>
         <div className="footer">
           <div className="icons">
             <p>
-              <GoRepoForked /> {repo.forks_count} forks
+              <GoRepoForked /> {fork} forks
             </p>
             <p>
-              <FaStar /> {repo.stargazers_count} stars
+              <FaStar /> {star} stars
             </p>
           </div>
         </div>
