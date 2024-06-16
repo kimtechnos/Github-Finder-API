@@ -139,3 +139,66 @@ h2 {
 .profile-button svg {
   margin-right: 5px;
 }
+.repository-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.repository-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  flex-wrap: wrap;
+  gap: 5rem;
+  margin-right: 25px;
+  padding: 1rem 0;
+}
+.repo-card {
+  background-color: var(--primary-color);
+  border: 1px solid#e1e4e8;
+  border-radius: 5px;
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  width: 90px;
+  flex-direction: column;
+  flex: 1 1 calc(39.333% - 32px);
+  box-sizing: border-box;
+  text-align: left;
+}
+.repo-card a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.repo-card .header {
+  flex-grow: 1;
+  padding: 16px;
+}
+
+.repo-card .header h2 {
+  font-size: 1.25rem;
+  margin: 0 0 8px;
+}
+.repo-card .header p {
+  font-size: 1.27rem;
+
+  margin: 0;
+}
+.repo-card .footer {
+  background-color: var(--color-secondary);
+  padding: 5px;
+  margin: 0;
+}
+.repo-card .icons {
+  display: flex;
+  gap: 3rem;
+  font-size: larger;
+}
+.repo-card .icon p {
+  margin: 0;
+}

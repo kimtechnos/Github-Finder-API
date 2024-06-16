@@ -1,5 +1,6 @@
 import React from "react";
 import "./preview.css";
+import Repos from "./Repos";
 import {
   FaMapMarkerAlt,
   FaBook,
@@ -18,12 +19,8 @@ const Previews = ({
   name,
   login,
   following,
+  reposData,
   isLoading,
-  cardTitle,
-  cardDesc,
-  forks,
-  stars,
-  repoLink,
 }) => {
   return (
     <div className="profile-container">
@@ -34,7 +31,7 @@ const Previews = ({
               <img src={avatar_url} alt={`${name}'s avatar`} />
             </div>
             <h2>{name}</h2>
-            <p className="username">@{login}</p>
+            <p className="username">{login}</p>
             <a
               href={`https://github.com/${login}`}
               className="view-github"
@@ -65,13 +62,21 @@ const Previews = ({
           <div>Loading...</div>
         )}
       </div>
-      <div className="repository-section">
-        <a href={repoLink} target="_blank">
-          <div className="repo-card"></div>
-        </a>
-      </div>
 
       <div className="followers-following-section">
+        <div className="repo">
+          <h3>{`Repositories ${
+            reposData?.length > 0 ? reposData.length : "No repositories"
+          }`}</h3>
+        </div>
+        <div className="repository-section">
+          {reposData && reposData.length > 0 ? (
+            reposData.map((repo) => <Repos key={repo.id} repo={repo} />)
+          ) : (
+            <p>No repositories</p>
+          )}
+        </div>
+
         <div className="followers">
           {" "}
           <h3>Followers {followers}</h3>
@@ -88,10 +93,14 @@ const Previews = ({
                 <button
                   className="profile-button"
                   onClick={() =>
-                    window.open(`https://github.com/${user}`, "_blank")
+                    window.open(
+                      `https://github.com/${follower.login}`,
+                      "_blank",
+                    )
                   }
                 >
-                  <IoMdLink /> Profile
+                  <IoMdLink />
+                  View {follower.login}
                 </button>
               </div>
             ))
@@ -117,11 +126,11 @@ const Previews = ({
                   onClick={() =>
                     window.open(
                       `https://github.com/${following.login}`,
-                      "_blank"
+                      "_blank",
                     )
                   }
                 >
-                  <IoMdLink /> Profile
+                  <IoMdLink /> View {following.login}
                 </button>
               </div>
             ))

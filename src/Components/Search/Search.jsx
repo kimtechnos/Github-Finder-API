@@ -13,17 +13,20 @@ const Search = ({ setData, setIsLoading }) => {
       if (!response.ok) {
         throw new Error(`User ${user} not found`);
       }
+
       const userData = await response.json();
 
       const followersResponse = await fetch(userData.followers_url);
       const followersData = await followersResponse.json();
+      const reposResponse = await fetch(userData.repos_url);
+      const reposData = await reposResponse.json();
 
       const followingResponse = await fetch(
         `https://api.github.com/users/${user}/following`,
       );
       const followingData = await followingResponse.json();
 
-      setData({ ...userData, followersData, followingData });
+      setData({ ...userData, followersData, followingData, reposData });
     } catch (error) {
       console.error("Error fetching data:", error);
       setError("Failed to fetch data from Github API");
@@ -45,7 +48,7 @@ const Search = ({ setData, setIsLoading }) => {
         </div>
         <p>
           <span>
-            <a href=""> By Francis Kimani</a>
+            <a href={user}> By Francis Kimani</a>
           </span>
         </p>
         <div className="search-bar">

@@ -11,7 +11,7 @@ function App() {
     <>
       <Search setIsLoading={setIsLoading} setData={setData} />
       <Previews
-        location={data.location}
+        location={data.location || "Locatioin not provided."}
         public_repos={data.public_repos}
         followers={data.followers}
         following={data.following}
@@ -20,6 +20,12 @@ function App() {
         login={data.login}
         followersData={data.followersData}
         followingData={data.followingData}
+        cardTitle={data.cardTitle}
+        cardDesc={data.cardDesc}
+        forks={data.forks}
+        stars={data.stars}
+        repoLink={data.repoLink}
+        reposData={data.reposData}
         isLoading={isLoading}
       />
     </>
